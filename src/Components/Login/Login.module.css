@@ -1,0 +1,29 @@
+.LoginDiv {
+    background-color: lightgray;
+    width: 10cm;
+    height: 10cm;
+    padding: 0.8cm;
+}
+
+.TextInput {
+    width: 95%;
+}
+
+.SignUp {
+    float: left;
+    font-size: 1cm;
+    background-color: grey;
+    width: 40%;
+    height: 1.5cm;
+    border-radius: 0.55cm;
+}
+
+.Login {
+    float: right;
+    font-size: 1cm;
+    color: white;
+    background-color: blue;
+    width: 40%;
+    height: 1.5cm;
+    border-radius: 0.55cm;
+}

@@ -1,0 +1,5 @@
+{
+    "PURECLOUD_IMPLICIT_GRANT_CLIENTID" : "f8b1094e-517f-48ed-965c-e3b9e4883c72",
+    "PURECLOUD_IMPLICIT_GRANT_CALLBACK_URL" : "http://localhost:3000/callback",
+    "APP_ORIGIN": "http://localhost:3000"
+}

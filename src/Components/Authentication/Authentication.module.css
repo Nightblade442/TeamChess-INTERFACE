@@ -1,0 +1,25 @@
+.Password {
+    float: left;
+    background-color: inherit;
+    color: #ffffff;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid grey;
+}
+
+.Username {
+    float: left;
+    background-color: inherit;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid grey;
+}

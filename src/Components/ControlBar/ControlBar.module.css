@@ -1,0 +1,26 @@
+.ControlBar {
+    float: left;
+    width: 100%;
+    height: 100%
+}
+
+.AuthenticationContainer{
+    float: left;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 100%;
+    height: 150px;
+
+    background-color: rgb(30, 30, 41);
+}
+
+.LoginButton{
+    float: left;
+    width:60%;
+    height: 30%;
+    margin-left: calc(40% / 2);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgb(24, 24, 255);
+    color :white;
+}

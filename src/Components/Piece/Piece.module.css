@@ -1,0 +1,50 @@
+.Square_WHITE {
+    width: 100%;
+    height: 100%;
+    background-color: #f0d9b5;
+}
+
+.Square_BLACK {
+    width: 100%;
+    height: 100%;
+    background-color: #b58863;
+}
+
+.Square_SELECTED_WHITE {
+    width: 100%;
+    height: 100%;
+    background-color: #f0d9b5;
+    background-image: url("../Images/selected.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+}
+
+.Square_SELECTED_BLACK {
+    width: 100%;
+    height: 100%;
+    background-color: #b58863;
+    background-image: url("../Images/selected.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+
+}
+
+.Square_HIGHLIGHTED_WHITE {
+    width: 100%;
+    height: 100%;
+    background-color: #f0d9b5;
+    background-image: url("../Images/highlighted.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+
+}
+
+.Square_HIGHLIGHTED_BLACK {
+    width: 100%;
+    height: 100%;
+    background-color: #b58863;
+    background-image: url("../Images/highlighted.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+
+}
