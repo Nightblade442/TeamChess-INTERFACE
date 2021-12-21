@@ -5,6 +5,7 @@ import store from "../../Redux/store";
 import { connect } from "react-redux";
 import { setImplicitGrantCredentials, setBoard, setSelected } from "../../Redux/actions/action";
 
+import sendMove from "../../API/sendMove";
 
 import styles from './Piece.module.css';
 
@@ -23,15 +24,16 @@ const images = {
     pawn_b: pawn_b,
     rook_w: rook_w,
     rook_b: rook_b,
-    bishop_w : bishop_w,
-    knight_w : knight_w,
-    queen_w : queen_w,
-    king_w : king_w
+    bishop_w: bishop_w,
+    knight_w: knight_w,
+    queen_w: queen_w,
+    king_w: king_w
 }
 
 const mapStateToProps = state => {
     return {
-        app: state,
+        
+       app : state,
     };
 };
 
@@ -82,8 +84,8 @@ class Piece extends Component {
                     </div>
                 )
             }
-            if (this.props.app.highlightedSquares.length !== 0) {
-                this.props.app.highlightedSquares.forEach(square => {
+            if (this.props.params.highlightedSquares.length !== 0) {
+                this.props.params.highlightedSquares.forEach(square => {
                     if ((square.x === this.props.params.location.x) && (square.y === this.props.params.location.y)) {
                         if (this.props.params.colour === "WHITE") {
                             console.log("here in colours for highlighted")
@@ -104,7 +106,7 @@ class Piece extends Component {
                 })
             }
 
-            if ((this.props.app.selectedSquare.x === this.props.params.location.x) && (this.props.app.selectedSquare.y === this.props.params.location.y)) {
+            if ((this.props.params.selectedSquare.x === this.props.params.location.x) && (this.props.params.selectedSquare.y === this.props.params.location.y)) {
                 if (this.props.params.colour === "WHITE") {
                     html = (
                         <div className={styles.Square_SELECTED_WHITE} style={style} onClick={this.handleClick}>
@@ -133,42 +135,7 @@ class Piece extends Component {
     }
 
     handleClick() {
-        if ((this.props.app.selectedSquare.x === this.props.params.location.x) && (this.props.app.selectedSquare.y === this.props.params.location.y)) {
-            console.log("This piece is seleceted");
-            let location = {
-                x: null,
-                y: null
-            }
-            this.props.setSelected({ selected: location });
-        } else {
-            let isHighlighted = false;
-            this.props.app.highlightedSquares.forEach(square => {
-                if ((square.x === this.props.params.location.x) && (square.y === this.props.params.location.y)) {
-                    //have to implement move piece here code.
-                    let board = this.props.app.board;
-                    let pieceLocation = this.props.app.selectedSquare;
-                    let piece = board[pieceLocation.x][pieceLocation.y];
-                    piece.location = square;
-                    board[pieceLocation.x][pieceLocation.y] = {
-                        type: null,
-                        location: pieceLocation
-                    }
-                    board[square.x][square.y] = piece;
-                    isHighlighted = true;
-                    this.props.setBoard({ board: board });
-                }
-            })
-            if (!isHighlighted) {
-                this.props.setSelected({ selected: this.props.params.location })
-                if (this.props.params.type !== null) {
-                    console.log("This is a piece...");
-
-                }
-                else {
-                    console.log("This is not a piece");
-                }
-            }
-        }
+       this.props.params.handleClick(this.props.params);
     }
 
 }
