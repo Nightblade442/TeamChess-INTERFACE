@@ -17,7 +17,8 @@ function getMove(params) {
                 username: params.username,
                 playerId: params.playerId,
                 gameId: params.game.gameId,
-                board: params.game.board
+                board: params.game.board,
+                move: params.game.move
             })
         })
             .then(response => {
