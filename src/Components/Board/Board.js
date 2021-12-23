@@ -3448,7 +3448,7 @@ class Board extends Component {
 
     render() {
         let html = null;
-        console.log(this.props.app.game.move)
+        console.log(this.props.app.flippedState)
         //console.log(this.props.app.game);
         //console.log(this.state.game);
         if (this.state.game.move >= this.props.app.game.move && this.state.game.gameId === this.props.app.game.gameId) {
@@ -3492,6 +3492,9 @@ class Board extends Component {
                             colour = 'WHITE'
                         }
                     }
+                    if (this.props.app.flippedState === -1) {
+                        fileArr = fileArr.reverse();
+                    }
                     board.push(<td>
                         {fileArr}
                     </td>)
@@ -3500,6 +3503,10 @@ class Board extends Component {
                     } else {
                         colour = 'WHITE'
                     }
+
+                }
+                if (this.props.app.flippedState === -1) {
+                    board = board.reverse();
                 }
                 html = (
                     <div className={styles.Board} id="Board">
@@ -3517,7 +3524,7 @@ class Board extends Component {
         else {
             this.setState({
                 ...this.state,
-                game : {
+                game: {
                     ...this.props.app.game
                 },
             })
@@ -3550,7 +3557,7 @@ class Board extends Component {
             getMove(params)
                 .then(response => {
                     let payload = {
-                        game : response.game
+                        game: response.game
                     }
                     this.props.setBoard(payload);
                 })
@@ -3606,12 +3613,12 @@ class Board extends Component {
                     }, () => {
                         //need to implement send move logic here. 
                         let params = {
-                            token : this.props.app.token,
+                            token: this.props.app.token,
                             game: this.state.game,
-                            playerId : this.props.app.playerId,
-                            username : this.props.app.username,
+                            playerId: this.props.app.playerId,
+                            username: this.props.app.username,
                         }
-                        if(this.props.app.playerId !== undefined && this.props.app.gameId !== undefined){
+                        if (this.props.app.playerId !== undefined && this.props.app.gameId !== undefined) {
                             console.log(params);
                             sendMove(params);
                         }

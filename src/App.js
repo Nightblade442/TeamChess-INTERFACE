@@ -17,6 +17,7 @@ import Login from './Components/Login/Login'
 import authorise from "./API/Authorise"
 
 import styles from './App.module.css'
+import ToolBar from './Components/ToolBar/ToolBar';
 
 
 const mapStateToProps = state => {
@@ -61,13 +62,14 @@ class App extends Component {
 
   render() {
     let html = null;
-    if (this.props.app.loggedIn) {
+    /*if (this.props.app.loggedIn) {
       if (this.props.app.page === "MAIN") {
         html = (
           <div className={styles.App}>
             <div className={styles.BoardContainer}>
               <Board></Board>
             </div>
+            <ToolBar></ToolBar>
             <div className={styles.ControlBarContainer}>
               <ControlBar></ControlBar>
             </div>
@@ -75,7 +77,7 @@ class App extends Component {
         )
       }
     }
-    else {
+    else { */
       if (this.props.app.page === "LOGIN") {
         html = (
           <div className={styles.App}>
@@ -104,7 +106,7 @@ class App extends Component {
           </div>
         )
       }
-    }
+   // }
     return (
       html
     )

@@ -5,7 +5,8 @@ import {
     SET_AUTHENTICATION_STATUS,
     SET_PAGE,
     SET_AUTHENTICATION_CREDENTIALS,
-    JOIN_GAME
+    JOIN_GAME,
+    SET_SETTINGS
 } from "../constants/action-types";
 import * as moment from 'moment';
 
@@ -29,33 +30,39 @@ function appReducer(state, action) {
             ...action.payload,
         }
     }
-    else if(action.type === SET_AUTHENTICATION_STATUS){
-         newstate = {
-             ...state,
-             ...action.payload
-         }
-    }
-    else if(action.type === SET_PAGE){
+    else if (action.type === SET_AUTHENTICATION_STATUS) {
         newstate = {
             ...state,
             ...action.payload
         }
     }
-    else if(action.type === SET_AUTHENTICATION_CREDENTIALS){
+    else if (action.type === SET_PAGE) {
         newstate = {
             ...state,
-            loggedIn : true,
+            ...action.payload
+        }
+    }
+    else if (action.type === SET_AUTHENTICATION_CREDENTIALS) {
+        newstate = {
+            ...state,
+            loggedIn: true,
             page: "MAIN",
             token: action.payload.token,
             username: action.payload.username,
         }
     }
-    else if(action.type === JOIN_GAME){
+    else if (action.type === JOIN_GAME) {
         newstate = {
             ...state,
-            gameId : action.payload.gameId,
+            gameId: action.payload.gameId,
             playerId: action.payload.playerId,
             updater: action.payload.updater
+        }
+    }
+    else if (action.type === SET_SETTINGS) {
+        newstate = {
+            ...state,
+            ...action.payload
         }
     }
     else {

@@ -5,7 +5,8 @@ import {
   SET_AUTHENTICATION_STATUS,
   SET_PAGE,
   SET_AUTHENTICATION_CREDENTIALS,
-  JOIN_GAME
+  JOIN_GAME,
+  SET_SETTINGS
 } from "../constants/action-types";
 
 export function setImplicitGrantCredentials(payload) { //takes in the payload and dispatches it to the store.
@@ -35,4 +36,8 @@ export function setAutenticationCredentials(payload) {
 
 export function setGameCredentials(payload){
   return { type: JOIN_GAME, payload}
+}
+
+export function setSettings(payload){
+  return { type: SET_SETTINGS, payload}
 }

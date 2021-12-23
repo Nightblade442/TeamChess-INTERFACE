@@ -2816,6 +2816,7 @@ const initialState = {
         ]
     ],
 },
+  flippedState : 1,
   clientId: getPureCloudImplicitGrantClientId(),
   callbackUrl: getPureCloudImplicitGrantCallbackUrl()
 }
