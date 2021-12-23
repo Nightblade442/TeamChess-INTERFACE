@@ -17,6 +17,10 @@ import bishop_w from '../Images/bishop_w.png';
 import knight_w from '../Images/knight_w.png';
 import queen_w from '../Images/queen_w.png';
 import king_w from '../Images/king_w.png';
+import bishop_b from '../Images/bishop_b.png';
+import knight_b from '../Images/knight_b.png';
+import queen_b from '../Images/queen_b.png';
+import king_b from '../Images/king_b.png';
 import { SET_IMPLICIT_GRANT_CREDENTIALS } from '../../Redux/constants/action-types';
 
 const images = {
@@ -27,7 +31,11 @@ const images = {
     bishop_w: bishop_w,
     knight_w: knight_w,
     queen_w: queen_w,
-    king_w: king_w
+    king_w: king_w,
+    bishop_b: bishop_b,
+    knight_b: knight_b,
+    queen_b: queen_b,
+    king_b: king_b
 }
 
 const mapStateToProps = state => {
@@ -67,7 +75,7 @@ class Piece extends Component {
             }
             if (this.props.params.type !== null) {
                 image = (
-                    <img src={images[this.props.params.type]} width={this.props.params.squareSize} width={this.props.params.squareSize}></img>
+                    <img src={images[this.props.params.type]} width={this.props.params.squareSize} height={this.props.params.squareSize}></img>
                 )
             }
             if (this.props.params.colour === "WHITE") {

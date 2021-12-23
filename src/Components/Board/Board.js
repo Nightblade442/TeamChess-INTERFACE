@@ -2896,6 +2896,18 @@ class Board extends Component {
                     onlyOnTake: false,
                     jumpable: false
                 },
+                {
+                    type: "CUSTOM",
+                    direction: {
+                        x: 1,
+                        y: 2
+                    },
+                    takeable: false,
+                    onlyOnTake: false,
+                    jumpable: false,
+                    firstMoveOnly: true
+
+                },
                 /*{
                     type: "CONTINUOUS",
                     direction: {
@@ -2937,7 +2949,19 @@ class Board extends Component {
                     takeable: false,
                     onlyOnTake: false,
                     jumpable: false
-                }
+                },
+                {
+                    type: "CUSTOM",
+                    direction: {
+                        x: 1,
+                        y: -2
+                    },
+                    takeable: false,
+                    onlyOnTake: false,
+                    jumpable: false,
+                    firstMoveOnly: true
+
+                },
             ],
             rook_w: [
                 {
@@ -3352,82 +3376,355 @@ class Board extends Component {
                     takeable: true,
                     jumpable: false,
                 },
+            ],
+            knight_b: [
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 1,
+                        y: 2
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -1,
+                        y: 2
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 1,
+                        y: -2
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -1,
+                        y: -2
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 2,
+                        y: 1
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 2,
+                        y: -1
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -2,
+                        y: 1
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -2,
+                        y: -1
+                    },
+                    takeable: true,
+                    onlyOnTake: false,
+                    jumpable: true
+                },
+            ],
+            queen_b: [
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: 1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: -1,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: 1,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: -1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: 0,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: 0,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: 1,
+                        y: 0
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CONTINUOUS",
+                    direction: {
+                        x: -1,
+                        y: 0
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+            ],
+            king_b: [
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -1,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 1,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 0,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 0,
+                        y: -1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: 1,
+                        y: 0
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "SINGLE",
+                    direction: {
+                        x: -1,
+                        y: 0
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
             ]
         }
-
-        if (moveTemplate[piece.type] !== undefined) {
-            //console.log("this piece's moves are defined");
-            let pieceTemplate = moveTemplate[piece.type];
-            pieceTemplate.forEach(moveSet => {
-                //console.log(moveSet);
-                if (moveSet.type === "SINGLE") {
-                    try {
-                        let moveLocation = {
-                            x: pieceLocation.x + moveSet.direction.x,
-                            y: pieceLocation.y + moveSet.direction.y
-                        }
-                        let moveSquare = board[moveLocation.x][moveLocation.y];
-                        if (moveSquare.type === null) {
-                            if (!moveSet.onlyOnTake) {
-                                possibleMoves.push(moveLocation);
+        console.log(piece.owner.playerId, this.props.app.playerId);
+        if (piece.owner.playerId === this.props.app.playerId) {
+            if (moveTemplate[piece.type] !== undefined) {
+                //console.log("this piece's moves are defined");
+                let pieceTemplate = moveTemplate[piece.type];
+                pieceTemplate.forEach(moveSet => {
+                    //console.log(moveSet);
+                    if (moveSet.type === "SINGLE") {
+                        try {
+                            let moveLocation = {
+                                x: pieceLocation.x + moveSet.direction.x,
+                                y: pieceLocation.y + moveSet.direction.y
                             }
-                        }
-                        else {
-                            //need to check if the piece on the target square is takeable
-                            let piece1Colour = piece.type.split("_")[1];
-                            let piece2Colour = moveSquare.type.split("_")[1];
-                            if (piece1Colour !== piece2Colour) {
-                                if (moveSet.takeable) {
+                            let moveSquare = board[moveLocation.x][moveLocation.y];
+                            if (moveSquare.type === null) {
+                                if (!moveSet.onlyOnTake) {
                                     possibleMoves.push(moveLocation);
                                 }
                             }
-                        }
-                    }
-                    catch (error) {
-                        // console.log(error);
-                        // console.log("move outside board boundaries")
-                    }
-                }
-                else {
-                    //console.log("here at least");
-                    let attempt = 1;
-                    while (true) {
-                        let moveLocation = {
-                            x: pieceLocation.x + (moveSet.direction.x * attempt),
-                            y: pieceLocation.y + (moveSet.direction.y * attempt)
-                        }
-                        try {
-                            let moveSquare = board[moveLocation.x][moveLocation.y];
-                            if (moveSquare.type === null) {
-                                possibleMoves.push(moveLocation);
-                            }
                             else {
                                 //need to check if the piece on the target square is takeable
-                                //console.log(moveSquare.type);
                                 let piece1Colour = piece.type.split("_")[1];
                                 let piece2Colour = moveSquare.type.split("_")[1];
                                 if (piece1Colour !== piece2Colour) {
                                     if (moveSet.takeable) {
                                         possibleMoves.push(moveLocation);
                                     }
-                                    if (!moveSet.jumpable) {
-                                        console.log("end of row");
+                                }
+                            }
+
+                        }
+                        catch (error) {
+                            // console.log(error);
+                            // console.log("move outside board boundaries")
+                        }
+                    }
+                    else if(moveSet.type === "CONTINUOUS") {
+                        //console.log("here at least");
+                        let attempt = 1;
+                        while (true) {
+                            let moveLocation = {
+                                x: pieceLocation.x + (moveSet.direction.x * attempt),
+                                y: pieceLocation.y + (moveSet.direction.y * attempt)
+                            }
+                            try {
+                                let moveSquare = board[moveLocation.x][moveLocation.y];
+                                if (moveSquare.type === null) {
+                                    possibleMoves.push(moveLocation);
+                                }
+                                else {
+                                    //need to check if the piece on the target square is takeable
+                                    //console.log(moveSquare.type);
+                                    let piece1Colour = piece.type.split("_")[1];
+                                    let piece2Colour = moveSquare.type.split("_")[1];
+                                    if (piece1Colour !== piece2Colour) {
+                                        if (moveSet.takeable) {
+                                            possibleMoves.push(moveLocation);
+                                        }
+                                        if (!moveSet.jumpable) {
+                                            console.log("end of row");
+                                            break;
+                                        }
+                                    }
+                                    else {
                                         break;
                                     }
                                 }
-                                else {
-                                    break;
+                            }
+                            catch {
+                                //console.log("Square Outside Boundaries of the board");
+                                break;
+                            }
+                            attempt++;
+                        }
+                    }
+                    else{
+                        console.log("Here");
+                        console.log(piece.type);
+                        if(piece.type === "pawn_w"){
+                            if(piece.firstMove !== false){
+                                if(board[piece.location.x][piece.location.y + 1].type === null && board[piece.location.x][piece.location.y + 2].type === null){
+                                    possibleMoves.push({
+                                        x : piece.location.x,
+                                        y : piece.location.y + 2
+                                    });
                                 }
                             }
                         }
-                        catch {
-                            //console.log("Square Outside Boundaries of the board");
-                            break;
+                        else if(piece.type === "pawn_b"){
+                            if(piece.firstMove !== false){
+                                if(board[piece.location.x][piece.location.y - 1].type === null && board[piece.location.x][piece.location.y - 2].type === null){
+                                    possibleMoves.push({
+                                        x : piece.location.x,
+                                        y : piece.location.y - 2
+                                    });
+                                }
+                            }
                         }
-                        attempt++;
                     }
-                }
-            })
+                })
+            }
         }
         return possibleMoves;
     }
@@ -3464,7 +3761,7 @@ class Board extends Component {
                             params = {
                                 ...this.state,
                                 handleClick: this.handleClick,
-                                squareSize: Math.floor(this.state.dimensions.height / 8),
+                                squareSize: Math.floor((this.state.dimensions.height - 80) / 8),
                                 colour: colour,
                                 ...square,
                             }
@@ -3508,11 +3805,69 @@ class Board extends Component {
                 if (this.props.app.flippedState === -1) {
                     board = board.reverse();
                 }
-                html = (
-                    <div className={styles.Board} id="Board">
-                        {board}
-                    </div>
-                )
+
+                //Generating Board Lables 
+                if (this.state.game.players !== null) {
+                    let whiteLables = [];
+                    let blackLables = [];
+                    let style = {
+                        width: (this.state.dimensions.height - 84) + 'px',
+                        height: 40 + 'px'
+                    }
+                    console.log(this.state.game.players)
+                    let players = Object.values(this.state.game.players);
+                    for (let player = 0; player < players.length; player++) {
+
+                        if (player % 2 === 0) {
+                            whiteLables.push(
+                                <td>
+                                    <div className={styles.whiteLable} style={style}>
+                                        <p>{this.state.game.players[`Player_${player}`].username}</p>
+                                    </div>
+                                </td>
+                            )
+                        }
+                        else {
+                            blackLables.push(
+                                <td>
+                                    <div className={styles.blackLable} style={style}>
+                                        <p>{this.state.game.players[`Player_${player}`].username}</p>
+                                    </div>
+                                </td>
+                            )
+                        }
+
+                    }
+                    if (this.props.app.flippedState === 1) {
+                        html = (
+                            <div className={styles.Board} id="Board">
+                                <tr>{whiteLables}</tr>
+                                {board}
+                                <tr>{blackLables}</tr>
+                            </div>
+                        )
+                    }
+                    else {
+                        html = (
+                            <div className={styles.Board} id="Board">
+                                <tr>{blackLables.reverse()}</tr>
+                                {board}
+                                <tr>{whiteLables.reverse()}</tr>
+                            </div>
+                        )
+                    }
+
+                }
+                else {
+                    html = (
+                        <div className={styles.Board} id="Board">
+
+                            {board}
+
+                        </div>
+                    )
+                }
+
             }
             else {
                 html = (
@@ -3596,7 +3951,9 @@ class Board extends Component {
                         type: null,
                         location: pieceLocation
                     }
+                    piece.firstMove = false;
                     board[highlighted.x][highlighted.y] = piece;
+                    
                     isHighlighted = true;
                     this.setState({
                         ...this.state,

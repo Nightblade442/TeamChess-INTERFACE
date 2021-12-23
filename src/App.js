@@ -62,7 +62,7 @@ class App extends Component {
 
   render() {
     let html = null;
-    /*if (this.props.app.loggedIn) {
+    if (this.props.app.loggedIn) {
       if (this.props.app.page === "MAIN") {
         html = (
           <div className={styles.App}>
@@ -73,11 +73,12 @@ class App extends Component {
             <div className={styles.ControlBarContainer}>
               <ControlBar></ControlBar>
             </div>
+            <footer> <small> Copyright © 2021, Jack Browne</small> </footer>
           </div>
         )
       }
     }
-    else { */
+    else {
       if (this.props.app.page === "LOGIN") {
         html = (
           <div className={styles.App}>
@@ -89,6 +90,7 @@ class App extends Component {
               <input type="button" className={styles.Login} value="LOGIN" onClick={this.handleLogin}></input>
               <input type="button" className={styles.SwitchPage} value="If you have not created an account please sign up" onClick={this.handleSwitchPage}></input>
             </div>
+            <footer> <small>&copy; Copyright © 2021, Jack Browne</small> </footer>
           </div>
         )
       }
@@ -103,10 +105,11 @@ class App extends Component {
               <input type="button" className={styles.Login} value="SIGN UP" onClick={this.handleSignUp}></input>
               <input type="button" className={styles.SwitchPage} value="If you have already signed up please login" onClick={this.handleSwitchPage}></input>
             </div>
+            <footer> <small>&copy; Copyright © 2021, Jack Browne</small> </footer>
           </div>
         )
       }
-   // }
+    }
     return (
       html
     )

@@ -15,7 +15,7 @@ function joinGame(params) {
                 token : params.token,
                 username: params.username,
                 gameId: params.gameId,
-                preference: "WHITE"
+                preference: null,
             })
         })
             .then(response => {
