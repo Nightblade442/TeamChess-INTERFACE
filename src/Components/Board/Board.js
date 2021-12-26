@@ -3468,16 +3468,6 @@ class Board extends Component {
                     onlyOnTake: false,
                     jumpable: true
                 },
-                {
-                    type: "CUSTOM",
-                    direction: {
-                        x: 1,
-                        y: 1
-                    },
-                    onlyOnTake: false,
-                    takeable: true,
-                    jumpable: false,
-                },
             ],
             queen_b: [
                 {
@@ -3637,6 +3627,16 @@ class Board extends Component {
                     direction: {
                         x: -1,
                         y: 0
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
+                {
+                    type: "CUSTOM",
+                    direction: {
+                        x: 1,
+                        y: 1
                     },
                     onlyOnTake: false,
                     takeable: true,
