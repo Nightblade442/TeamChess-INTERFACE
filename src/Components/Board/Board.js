@@ -3376,6 +3376,16 @@ class Board extends Component {
                     takeable: true,
                     jumpable: false,
                 },
+                {
+                    type: "CUSTOM",
+                    direction: {
+                        x: 1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
+                },
             ],
             knight_b: [
                 {
@@ -3457,6 +3467,16 @@ class Board extends Component {
                     takeable: true,
                     onlyOnTake: false,
                     jumpable: true
+                },
+                {
+                    type: "CUSTOM",
+                    direction: {
+                        x: 1,
+                        y: 1
+                    },
+                    onlyOnTake: false,
+                    takeable: true,
+                    jumpable: false,
                 },
             ],
             queen_b: [
@@ -3660,7 +3680,7 @@ class Board extends Component {
                             // console.log("move outside board boundaries")
                         }
                     }
-                    else if(moveSet.type === "CONTINUOUS") {
+                    else if (moveSet.type === "CONTINUOUS") {
                         //console.log("here at least");
                         let attempt = 1;
                         while (true) {
@@ -3699,25 +3719,133 @@ class Board extends Component {
                             attempt++;
                         }
                     }
-                    else{
+                    else {
                         console.log("Here");
                         console.log(piece.type);
-                        if(piece.type === "pawn_w"){
-                            if(piece.firstMove !== false){
-                                if(board[piece.location.x][piece.location.y + 1].type === null && board[piece.location.x][piece.location.y + 2].type === null){
+                        if (piece.type === "pawn_w") {
+                            if (piece.firstMove !== false) {
+                                if (board[piece.location.x][piece.location.y + 1].type === null && board[piece.location.x][piece.location.y + 2].type === null) {
                                     possibleMoves.push({
-                                        x : piece.location.x,
-                                        y : piece.location.y + 2
+                                        x: piece.location.x,
+                                        y: piece.location.y + 2
                                     });
                                 }
                             }
                         }
-                        else if(piece.type === "pawn_b"){
-                            if(piece.firstMove !== false){
-                                if(board[piece.location.x][piece.location.y - 1].type === null && board[piece.location.x][piece.location.y - 2].type === null){
+                        else if (piece.type === "pawn_b") {
+                            if (piece.firstMove !== false) {
+                                if (board[piece.location.x][piece.location.y - 1].type === null && board[piece.location.x][piece.location.y - 2].type === null) {
                                     possibleMoves.push({
-                                        x : piece.location.x,
-                                        y : piece.location.y - 2
+                                        x: piece.location.x,
+                                        y: piece.location.y - 2
+                                    });
+                                }
+                            }
+                        }
+                        else if (piece.type === "king_w") {
+                            if (piece.firstMove !== false) {
+                                if (board[piece.location.x - 1][piece.location.y].type === null && board[piece.location.x - 2][piece.location.y].type === null) {
+                                    possibleMoves.push({
+                                        x: piece.location.x - 2,
+                                        y: piece.location.y,
+                                        customScript: (state) => {
+                                            let board = state.game.board;
+                                            let pieceLocation = {
+                                                x: state.selectedSquare.x - 3,
+                                                y: state.selectedSquare.y
+                                            }
+                                            let piece = board[pieceLocation.x][pieceLocation.y];
+                                            piece.location = {
+                                                x: state.selectedSquare.x - 1,
+                                                y: state.selectedSquare.y
+                                            };
+                                            board[pieceLocation.x][pieceLocation.y] = {
+                                                type: null,
+                                                location: pieceLocation
+                                            }
+                                            piece.firstMove = false;
+                                            board[state.selectedSquare.x - 1][state.selectedSquare.y] = piece;
+                                            return board;
+                                        }
+                                    });
+                                }
+                                if (board[piece.location.x + 1][piece.location.y].type === null && board[piece.location.x + 2][piece.location.y].type === null && board[piece.location.x + 3][piece.location.y].type === null) {
+                                    possibleMoves.push({
+                                        x: piece.location.x + 2,
+                                        y: piece.location.y,
+                                        customScript: (state) => {
+                                            let board = state.game.board;
+                                            let pieceLocation = {
+                                                x: state.selectedSquare.x + 4,
+                                                y: state.selectedSquare.y
+                                            }
+                                            let piece = board[pieceLocation.x][pieceLocation.y];
+                                            piece.location = {
+                                                x: state.selectedSquare.x + 1,
+                                                y: state.selectedSquare.y
+                                            };
+                                            board[pieceLocation.x][pieceLocation.y] = {
+                                                type: null,
+                                                location: pieceLocation
+                                            }
+                                            piece.firstMove = false;
+                                            board[state.selectedSquare.x + 1][state.selectedSquare.y] = piece;
+                                            return board;
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                        else if (piece.type === "king_b") {
+                            if (piece.firstMove !== false) {
+                                if (board[piece.location.x - 1][piece.location.y].type === null && board[piece.location.x - 2][piece.location.y].type === null) {
+                                    possibleMoves.push({
+                                        x: piece.location.x - 2,
+                                        y: piece.location.y,
+                                        customScript: (state) => {
+                                            let board = state.game.board;
+                                            let pieceLocation = {
+                                                x: state.selectedSquare.x - 3,
+                                                y: state.selectedSquare.y
+                                            }
+                                            let piece = board[pieceLocation.x][pieceLocation.y];
+                                            piece.location = {
+                                                x: state.selectedSquare.x - 1,
+                                                y: state.selectedSquare.y
+                                            };
+                                            board[pieceLocation.x][pieceLocation.y] = {
+                                                type: null,
+                                                location: pieceLocation
+                                            }
+                                            piece.firstMove = false;
+                                            board[state.selectedSquare.x - 1][state.selectedSquare.y] = piece;
+                                            return board;
+                                        }
+                                    });
+                                }
+                                if (board[piece.location.x + 1][piece.location.y].type === null && board[piece.location.x + 2][piece.location.y].type === null && board[piece.location.x + 3][piece.location.y].type === null) {
+                                    possibleMoves.push({
+                                        x: piece.location.x + 2,
+                                        y: piece.location.y,
+                                        customScript: (state) => {
+                                            let board = state.game.board;
+                                            let pieceLocation = {
+                                                x: state.selectedSquare.x + 4,
+                                                y: state.selectedSquare.y
+                                            }
+                                            let piece = board[pieceLocation.x][pieceLocation.y];
+                                            piece.location = {
+                                                x: state.selectedSquare.x + 1,
+                                                y: state.selectedSquare.y
+                                            };
+                                            board[pieceLocation.x][pieceLocation.y] = {
+                                                type: null,
+                                                location: pieceLocation
+                                            }
+                                            piece.firstMove = false;
+                                            board[state.selectedSquare.x + 1][state.selectedSquare.y] = piece;
+                                            return board;
+                                        }
                                     });
                                 }
                             }
@@ -3944,6 +4072,10 @@ class Board extends Component {
                 if ((highlighted.x === square.location.x) && (highlighted.y === square.location.y)) {
                     //have to implement move piece here code.
                     let board = this.state.game.board;
+                    if (highlighted.customScript !== undefined) {
+                        //i.e there is something else that needs to happen to the board first. 
+                        board = highlighted.customScript(this.state);
+                    }
                     let pieceLocation = this.state.selectedSquare;
                     let piece = board[pieceLocation.x][pieceLocation.y];
                     piece.location = highlighted;
@@ -3953,7 +4085,7 @@ class Board extends Component {
                     }
                     piece.firstMove = false;
                     board[highlighted.x][highlighted.y] = piece;
-                    
+
                     isHighlighted = true;
                     this.setState({
                         ...this.state,
