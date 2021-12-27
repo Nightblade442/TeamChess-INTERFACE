@@ -4069,50 +4069,58 @@ class Board extends Component {
         } else {
             let isHighlighted = false;
             this.state.highlightedSquares.forEach(highlighted => {
-                if ((highlighted.x === square.location.x) && (highlighted.y === square.location.y)) {
-                    //have to implement move piece here code.
-                    let board = this.state.game.board;
-                    if (highlighted.customScript !== undefined) {
-                        //i.e there is something else that needs to happen to the board first. 
-                        board = highlighted.customScript(this.state);
-                    }
-                    let pieceLocation = this.state.selectedSquare;
-                    let piece = board[pieceLocation.x][pieceLocation.y];
-                    piece.location = highlighted;
-                    board[pieceLocation.x][pieceLocation.y] = {
-                        type: null,
-                        location: pieceLocation
-                    }
-                    piece.firstMove = false;
-                    board[highlighted.x][highlighted.y] = piece;
-
+                let Players = Object.values(this.state.game.players)
+                console.log(`Move Number : ${this.state.game.move}`);
+                console.log(this.state.game.players[`Player_${(this.state.game.move)% Players.length}`]);
+                console.log(this.props.app.playerId);
+                if(this.state.game.players[`Player_${(this.state.game.move)% Players.length}`].playerId === this.props.app.playerId ){
                     isHighlighted = true;
-                    this.setState({
-                        ...this.state,
-                        highlightedSquares: [],
-                        selectedSquare: {
-                            x: null,
-                            y: null
-                        },
-                        game: {
-                            ...this.state.game,
-                            board: board,
-                            move: this.state.game.move + 1,
+                    if ((highlighted.x === square.location.x) && (highlighted.y === square.location.y)) {
+                        //have to implement move piece here code.
+                        let board = this.state.game.board;
+                        if (highlighted.customScript !== undefined) {
+                            //i.e there is something else that needs to happen to the board first. 
+                            board = highlighted.customScript(this.state);
                         }
-                    }, () => {
-                        //need to implement send move logic here. 
-                        let params = {
-                            token: this.props.app.token,
-                            game: this.state.game,
-                            playerId: this.props.app.playerId,
-                            username: this.props.app.username,
+                        let pieceLocation = this.state.selectedSquare;
+                        let piece = board[pieceLocation.x][pieceLocation.y];
+                        piece.location = highlighted;
+                        board[pieceLocation.x][pieceLocation.y] = {
+                            type: null,
+                            location: pieceLocation
                         }
-                        if (this.props.app.playerId !== undefined && this.props.app.gameId !== undefined) {
-                            console.log(params);
-                            sendMove(params);
-                        }
-                    });
+                        piece.firstMove = false;
+                        board[highlighted.x][highlighted.y] = piece;
+    
+                        isHighlighted = true;
+                        this.setState({
+                            ...this.state,
+                            highlightedSquares: [],
+                            selectedSquare: {
+                                x: null,
+                                y: null
+                            },
+                            game: {
+                                ...this.state.game,
+                                board: board,
+                                move: this.state.game.move + 1,
+                            }
+                        }, () => {
+                            //need to implement send move logic here. 
+                            let params = {
+                                token: this.props.app.token,
+                                game: this.state.game,
+                                playerId: this.props.app.playerId,
+                                username: this.props.app.username,
+                            }
+                            if (this.props.app.playerId !== undefined && this.props.app.gameId !== undefined) {
+                                console.log(params);
+                                sendMove(params);
+                            }
+                        });
+                    }
                 }
+               
             })
             if (!isHighlighted) {
                 if (square.type !== null) {
