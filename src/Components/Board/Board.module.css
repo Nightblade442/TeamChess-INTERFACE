@@ -37,3 +37,13 @@ p {
     padding : 0;
     color: black;
 }
+
+.tableDown {
+    float: left,
+}
+
+.fullBoardLength {
+    float : left;
+    height : calc(100% - 80px);
+
+}
