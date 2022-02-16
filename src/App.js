@@ -23,6 +23,11 @@ import ToolBar from './Components/ToolBar/ToolBar';
 const mapStateToProps = state => {
   return {
     app: state,
+    state: {
+      username: null,
+      password: null,
+      ERROR: "",
+    }
   };
 };
 
@@ -40,8 +45,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null
+      username: "",
+      password: "",
+      ERROR: "",
     }
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
@@ -85,8 +91,9 @@ class App extends Component {
             <div className={styles.LoginContainer}>
               <h1>TEAM Chess</h1>
               <h3>Please Login</h3>
-              <input type="text" placeholder="Username" className={styles.Username} onChange={this.handleUsernameChange}></input>
-              <input type="text" placeholder="Password" className={styles.Password} onChange={this.handlePasswordChange}></input>
+              <h5 className={styles.ErrorMsg}>{this.state.ERROR}</h5>
+              <input type="text" placeholder="Username" className={styles.Username} onChange={this.handleUsernameChange} value={this.state.username}></input>
+              <input type="text" placeholder="Password" className={styles.Password} onChange={this.handlePasswordChange} value={this.state.password}></input>
               <input type="button" className={styles.Login} value="LOGIN" onClick={this.handleLogin}></input>
               <input type="button" className={styles.SwitchPage} value="If you have not created an account please sign up" onClick={this.handleSwitchPage}></input>
             </div>
@@ -100,6 +107,7 @@ class App extends Component {
             <div className={styles.LoginContainer}>
               <h1>TEAM Chess</h1>
               <h3>Please sign up</h3>
+              <h5 className={styles.ErrorMsg}>{this.state.ERROR}</h5>
               <input type="text" placeholder="Username" className={styles.Username} onChange={this.handleUsernameChange}></input>
               <input type="text" placeholder="Password" className={styles.Password} onChange={this.handlePasswordChange}></input>
               <input type="button" className={styles.Login} value="SIGN UP" onClick={this.handleSignUp}></input>
@@ -130,8 +138,21 @@ class App extends Component {
         let payload = {
           token: response.token,
           username: params.username,
+          message: response.message
         }
-        this.setAutenticationCredentials(payload);
+        if (response.statusCode === 200) {
+          this.setAutenticationCredentials(payload);
+        }
+        else {
+          //have to display the payload.message ERROR
+
+          let state = {
+            ...this.state,
+            ERROR: payload.message
+          }
+          this.setState(state);
+
+        }
       })
       .catch(error => {
         console.log(error);
@@ -149,12 +170,24 @@ class App extends Component {
     }
     authorise(params)
       .then(response => {
-        console.log(response.token);
+        console.log(response);
         let payload = {
           token: response.token,
           username: params.username,
+          message: response.message
         }
-        this.setAutenticationCredentials(payload);
+        if (response.statusCode === 200) {
+          this.setAutenticationCredentials(payload);
+        }
+        else {
+          //have to display the payload.message ERROR
+
+          let state = {
+            ...this.state,
+            ERROR: payload.message
+          }
+          this.setState(state);
+        }
       })
       .catch(error => {
         console.log(error);
@@ -180,13 +213,23 @@ class App extends Component {
       let props = {
         page: "LOGIN"
       }
-      this.props.setPage(props);
+      this.setState({
+        username: "",
+        password: "",
+        ERROR: "",
+      }, response => {this.props.setPage(props)})
+        
+
     }
     else if (this.props.app.page === "LOGIN") {
       let props = {
         page: "SIGN_UP"
       }
-      this.props.setPage(props);
+      this.setState({
+        username: "",
+        password: "",
+        ERROR: "",
+      }, response => {this.props.setPage(props)})
     }
   }
 

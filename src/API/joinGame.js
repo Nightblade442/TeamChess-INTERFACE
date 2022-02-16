@@ -1,4 +1,5 @@
 function joinGame(params) {
+    console.log(params);
     return new Promise((resolve, reject) => {
         let url = `https://m7c27ovye5.execute-api.eu-west-1.amazonaws.com/Production/joingame`
         fetch(url, {
@@ -15,7 +16,7 @@ function joinGame(params) {
                 token : params.token,
                 username: params.username,
                 gameId: params.gameId,
-                preference: null,
+                preference: params.preference,
             })
         })
             .then(response => {

@@ -32,23 +32,41 @@ class JoinGame extends Component {
         super(props);
 
         this.state = {
-            numberOfBoards: 1,
-            gameId: "Game ID:"
+            gameId: "Game ID:",
+            preference: "WHITE"
         }
         // this.resize = this.resize.bind(this);
        this.handleIdChange = this.handleIdChange.bind(this);
         this.handleJoinGame = this.handleJoinGame.bind(this);
+        this.changePreference = this.changePreference.bind(this);
     }
 
     componentDidMount() {
     }
 
     render() {
+        let slider = null;
+        if(this.state.preference === "WHITE"){
+            slider = (
+                <div className={styles.SliderBackgroundWHITE} onClick={this.changePreference}>
+                    <div className={styles.SliderWHITE}></div>
+                </div>
+            )
+        }
+        else{
+                slider = (
+                    <div className={styles.SliderBackgroundBLACK} onClick={this.changePreference}>
+                        <div className={styles.SliderBLACK}></div>
+                    </div>
+                )
+        }
+
         return (
             <div className={styles.CreateGameContainer}>
                 <h4>Number of Boards: </h4>
                 <input type="text"placeholder="game ID" onChange={this.handleIdChange}></input>
                 <button className={styles.JoinGameButton} onClick={this.handleJoinGame}>Join</button>
+                {slider}
                 </div>
         )
     }
@@ -67,6 +85,7 @@ class JoinGame extends Component {
             token: this.props.app.token,
             username: this.props.app.username,
             gameId: this.state.gameId,   
+            preference: this.state.preference
         }
         console.log(params);
         let state = this.props.app;
@@ -82,6 +101,21 @@ class JoinGame extends Component {
             console.log(error);
         })
         //need to join the game then set state
+    }
+    
+    changePreference(event){
+        if(this.state.preference === "WHITE"){
+            this.setState({
+                ...this.state,
+                preference: "BLACK"
+            })
+        }
+        else{
+            this.setState({
+                ...this.state,
+                preference: "WHITE"
+            })
+        }
     }
 }
 

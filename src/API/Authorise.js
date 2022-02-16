@@ -23,8 +23,12 @@ function authorise(params) {
                 return response.json();
             })
             .then(json => {
-                console.log(json.body);
-                resolve(json.body);
+                let body = {
+                    ...json.body,
+                    statusCode: json.statusCode,
+                }
+                console.log(json);
+                resolve(body);
             })
             .catch(error => {
                 console.log(error);

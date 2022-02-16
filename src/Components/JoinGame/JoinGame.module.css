@@ -24,3 +24,44 @@
     background-color: rgb(139, 139, 139);
     color: white;
 }
+
+
+.SliderBackgroundWHITE {
+    float: right;
+    background-color: white;
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    margin : 5px;
+    margin-right: calc(50% - 50px);
+    border: solid, grey, 2px;
+}
+
+.SliderBackgroundBLACK {
+    float: right;
+    background-color: black;
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    margin : 5px;
+    margin-right: calc(50% - 50px);
+    border: solid, grey, 2px;
+}
+
+.SliderWHITE{
+    background-color: gray;
+    border: solid, black, 2px;
+    float: left;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
+
+.SliderBLACK{
+    background-color: gray;
+    border: solid, black, 2px;
+    float: right;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
