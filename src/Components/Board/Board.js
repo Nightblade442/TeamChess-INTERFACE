@@ -3249,11 +3249,11 @@ class Board extends Component {
             let isHighlighted = false;
             this.state.highlightedSquares.forEach(highlighted => {
                 let Players = Object.values(this.state.game.players)
-                console.log(`Move Number : ${this.state.game.move}`);
-                console.log(this.state.game.players[`Player_${(this.state.game.move)% Players.length}`]);
-                console.log(this.props.app.playerId);
+                //console.log(`Move Number : ${this.state.game.move}`);
+                //console.log(this.state.game.players[`Player_${(this.state.game.move)% Players.length}`]);
+               // console.log(this.props.app.playerId);
                 if(this.state.game.players[`Player_${(this.state.game.move)% Players.length}`].playerId === this.props.app.playerId ){
-                    isHighlighted = true;  
+                   // isHighlighted = true;  
                     if ((highlighted.x === square.location.x) && (highlighted.y === square.location.y)) {
                         //have to implement move piece here code.
                         let board = this.state.game.board;
@@ -3323,6 +3323,7 @@ class Board extends Component {
                             x: square.location.x,
                             y: square.location.y
                         },
+                        highlightedSquares: [],
                     });
                 }
             }
